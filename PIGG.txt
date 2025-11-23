@@ -1,0 +1,82 @@
+mat1.txt
+1,2
+3,4
+
+mat2.txt
+5,6,7
+8,9,0
+
+create directory -->
+put both the text file in the directory--> -put
+
+Hadoop fs -put mat1.txt /pdata
+
+ma = LOAD '/pdata/mat1.txt' USING PigStorage(',') AS(a1:int,a2:int);
+dump ma;
+
+mb = LOAD '/pdata/mat2.txt' USING PigStorage(',') AS(a4:int,a5:int,a6:int);
+dump mb;
+
+cresult = CROSS ma,mb;
+dump cresult;
+
+
+2. create file as:
+1.8
+2.7
+3.4
+-1.9
+6.7
+-2.8
+ft = LOAD '/...' AS(a1:float);
+dump ft;
+--> ab = FOREACH ft generate ABS(a1);
+dump ab;
+3. create file as:
+8
+27
+64
+125
+216
+343
+ct = LOAD '/...' AS(a2:int); 
+dump ct;
+
+ctresult = FOREACH ct generate CBRT(a2):
+dump ctresult;
+
+4. calculate cube root of the following:
+2.3
+5.0
+1.8
+8.2
+3.1
+
+a11 = FOREACH ct generate(a2),CEIL(a2);
+dump a11;
+
+a22 = FOREACH ct generate(a2),FLOOR(a2);
+dump a22;
+
+a33 = FOREACH ct generate(a2),ROUND(a2);
+dump a33; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

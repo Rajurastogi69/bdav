@@ -1,0 +1,22 @@
+aggregation:
+--> my collection "stud"
+---> query to count the no. of types classes
+ db.stud.aggregate([{$sortByCount:"$class"}])
+
+--> query to sort the age of the students (using aggregate method)
+
+db.stud.aggregate([{$sort:{age:1}}])
+
+-->query to display and sort name of students having age less than 25
+
+db.stud.aggregate([{$match:{age:{$lt:25}}},{$sort:{name:1}}])
+
+
+db.stud.aggregate([{$match:{age:{$lt:25}}},{$sort:{name:1}},{$project:{name:1}},{$limit:2}])
+
+
+
+{$project:{name:1}},{$limit:2}
+
+
+

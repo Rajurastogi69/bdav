@@ -1,0 +1,33 @@
+show dbs (it will show list of dbs)
+//creating db 
+
+use mca
+db.createCollection("secondyear")
+
+// insert in second year
+
+db.secondyear.insert([{Name:"Robert",Age:26,class:"SY",Game:["Baseball","Soccer"]},{},{}])
+
+1. db.seconyear.update({Name:"Nicolas"},{$set:{Name:"Will"}})
+
+2. db.seconyear.update({Name:"Robert"},{$set:{Name:"Das",Age:35}})
+
+3. suppose we have SY as 2 to 3 records
+   and we want to update it as TY
+db.seconyear.updateMany({class:"SY"},{$set:{class:"TY"}})
+
+4. adding one more value in game field 
+db.seconyear.update({Name:"Nicolas"},{$push:{Game:"Cricket"}})
+
+5. incrementing age value with 4
+db.seconyear.update({Name:"Nicolas"},{$inc:{Age:4}})
+
+db.seconyear.update({Name:"Nicolas"},{$mul:{Age:2}})
+
+6. we want to remove age field 
+
+
+
+
+
+

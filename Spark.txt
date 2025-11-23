@@ -1,0 +1,105 @@
+val data = sc.textFile("file:/....path");
+
+data;
+
+data.collect();
+
+data.first();
+
+data.count();
+
+data.take(2);
+
+val dt = sc.parallelize(List(10,20,30));
+
+dt.collect();
+
+//applying map() method
+
+val ma = dt.map(x=>x+10);
+ma.collect();
+
+val mb = dt.map(x=>x-5);
+mb.collect();
+//Union operation 
+val data1 = sc.parallelize(List(11,56,38,74,80,78));
+
+data1.collect();
+
+val data2 = sc.parallelize(List(10,50,38,74,82,75));
+
+data2.collect();
+
+val uniondata = data1.union(data2);
+uniondata.collect();
+
+//intersection 
+
+val idata = data1.intersection(data2);
+idata.collect();
+
+//cartesian product
+
+val pdata = data1.cartesian(data2);
+pdata.collect();
+
+//Key value pair
+val data = sc.parallelize(Seq(("z",39),("a",45),("j",20),("c",33),("z",90),("k",67)));
+
+data.collect();
+ 
+val sortdata = data.sortByKey();
+sortdata.collect();
+
+val sortdata = data.sortByKey(false);
+sortdata.collect();
+
+//groupByKey
+
+val grpdata = data.groupByKey();
+
+grpdata.collect();
+
+var a = 1 to 20;
+ 
+create file 
+go to scala 
+
+val cfile = sc.textFile("file:/home/cloudera/name.txt");
+
+cfile.collect();
+
+var charfile = cfile.flatMap(line=>line.split(""));
+charfile.collect();
+
+var fchar = charfile.map(fchar=>(fchar,1));
+fchar.collect();
+
+var finalchar = fchar.reduceByKey(_+_);
+finalchar.collect();
+
+go to scala mode and upload your num.txt 
+
+val namefile = sc.textFile("file:/home/cloudera/num.txt");
+namefile.collect();
+
+val splitdata = namefile.flatMap(line=>line.split(" "));
+splitdata.collect();
+
+val cword = splitdata.map(cword=>(cword,1));
+cword.collect();
+
+val result = cword.reduceByKey(_+_);
+result.collect();
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+//inserting more than one records
+
+db.book.insert(
+{"b_id":34,"b_name":"science","b_author":"xyz"},
+{"b_id":32,"b_name":"Maths","b_author":"abc"},
+{"b_id":56,"b_name":"English","b_author":"pqr"})
+
+//display records
+db.book.find()
+
+db.book.insertMany([
+{"b_id":34,"b_name":"science","b_author":"xyz"},
+{"b_id":32,"b_name":"Maths","b_author":"abc"},
+{"b_id":56,"b_name":"English","b_author":"pqr"}])
+
+create one collection as employee 
+emp_id---> 45, 34, 67, 23, 56 
+emp_name
+emp_loc
+salary
+
+
+//query to find employees having id < 50
+
+db.employee.find({"emp_id":{$lt:50}}).pretty()
+
+//query to find employees with name --> tom,jerry,casper
+db.employee.find({"fname":{$in:["tom","jerry","casper"]}})
+
+db.employee.find({"fname":{$nin:["tom","jerry","casper"]}})
+
+// query to remove or delete any record w.r.t any field
+//deleting record of employee having emp_id = 89
+
+db.employee.remove({"emp_id":89})
+
+//sorting (query to sort data w.r.t emp_id)
+
+db.employee.find().sort({"emp_id":1}) //ascending
+db.employee.find().sort({"emp_id":-1}) //descending
+
+//removing a collection
+
+db.employee.drop()
+
+
+
+
+
+
+
